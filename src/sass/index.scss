@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import './header';
+@import './chat-list';
+@import './typing-area';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  // Dark mode colors
+  --text-color: #e3e3e3;
+  --subheading-color: #828282;
+  --placeholder-color: #a6a6a6;
+  --primary-color: #242424;
+  --secondary-color: #383838;
+  --secondary-hover-color: #444;
+}
+
+.light_mode {
+  // Light mode colors
+  --text-color: #222;
+  --subheading-color: #a0a0a0;
+  --placeholder-color: #6c6c6c;
+  --primary-color: #fff;
+  --secondary-color: #e9eef6;
+  --secondary-hover-color: #d7e7ee;
+}
+
+body {
+  background: var(--primary-color);
+}
+
+body.hide-header {
+  .header {
+    display: none;
+    margin-top: 0;
+  }
+}
+
+.header,
+.typing-area {
+  color: var(--text-color);
+}
+
+.header,
+.chat-list .chat-list__message,
+.typing-area__typing-form {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.header {
+  margin-top: 7vh;
+}

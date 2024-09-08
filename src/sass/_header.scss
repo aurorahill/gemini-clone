@@ -1,0 +1,66 @@
+.header {
+  padding: 1rem;
+  & :where(.header__title, .header__subtitle) {
+    font-weight: 500;
+    line-height: 3.6rem;
+  }
+  .header__title {
+    font-size: 2.7rem;
+    width: fit-content;
+    background-clip: text;
+    background: linear-gradient(to right, #468faf, #f8ae4e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header__subtitle {
+    font-size: 2.4rem;
+    color: var(--subheading-color);
+  }
+  .header__suggestion-list {
+    margin-top: 9.5vh;
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+    .header__suggestion {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 1.25rem;
+      width: 227px;
+      flex-shrink: 0;
+      background: var(--secondary-color);
+      border-radius: 0.75rem;
+      cursor: pointer;
+      .header__suggestion-text {
+        font-weight: 400;
+      }
+      .header__icon {
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        height: 42px;
+        width: 42px;
+        font-size: 1.3rem;
+        background: var(--primary-color);
+      }
+    }
+    .header__suggestion:hover {
+      background: var(--secondary-hover-color);
+    }
+  }
+  @media (max-width: 768px) {
+    .header__title {
+      font-size: 2rem;
+      line-height: 2.6rem;
+    }
+    .header__subtitle {
+      font-size: 1.7rem;
+      line-height: 2.6rem;
+    }
+  }
+}
