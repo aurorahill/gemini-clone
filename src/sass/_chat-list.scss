@@ -1,0 +1,105 @@
+.chat-list {
+  padding: 2rem 1rem 12rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-color: #999 transparent;
+  .chat-list__message {
+    .chat-list__message-content {
+      display: flex;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: center;
+    }
+    .chat-list__avatar {
+      align-self: flex-start;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .chat-list__text {
+      color: var(--text-color);
+    }
+    .chat-list__text.error {
+      color: #e55865;
+    }
+    .chat-list__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 3.5rem;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      color: var(--text-color);
+      background: var(--secondary-color);
+      cursor: pointer;
+      visibility: hidden;
+    }
+    .chat-list__icon:hover {
+      background: var(--secondary-hover-color);
+    }
+    @media (max-width: 768px) {
+      .chat-list__avatar {
+        width: 37px;
+        height: 37px;
+      }
+    }
+  }
+  .chat-list__message:not(.chat-list__loading):hover {
+    .chat-list__icon:not(.hide) {
+      visibility: visible;
+    }
+  }
+  .chat-list__message.chat-list__incoming {
+    margin-top: 1.5rem;
+  }
+  .chat-list__message.chat-list__loading {
+    .chat-list__text {
+      display: none;
+    }
+    .chat-list__avatar {
+      animation: rotate 2.5s linear infinite;
+    }
+    .chat-list__loading-indicator {
+      display: flex;
+    }
+  }
+  .chat-list__loading-indicator {
+    display: none;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    .chat-list__loading-bar {
+      height: 11px;
+      width: 100%;
+      border-radius: 0.14rem;
+      background: linear-gradient(
+        to right,
+        #74a0b3,
+        var(--primary-color),
+        #74a0b3
+      );
+      animation: animate 3s linear infinite;
+    }
+    .chat-list__loading-bar:last-child {
+      width: 70%;
+    }
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,88 @@
+.typing-area {
+  position: fixed;
+  padding: 1rem;
+  width: 100%;
+  bottom: 0;
+  background: var(--primary-color);
+  & :where(.typing-area__typing-form, .typing-area__action-buttons) {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .typing-area__input-wrapper {
+    display: flex;
+    position: relative;
+    height: 56px;
+    width: 100%;
+    .typing-area__icon {
+      position: absolute;
+      right: 0;
+      outline: none;
+      border: none;
+      background: none;
+      color: var(--text-color);
+      transform: scale(0);
+      transition: transform 0.2s ease;
+    }
+    .typing-area__typing-input:valid ~ .typing-area__icon {
+      transform: scale(1);
+    }
+  }
+  .typing-area__typing-input {
+    padding: 1.1rem 4rem 1.1rem 1.5rem;
+    height: 100%;
+    width: 100%;
+    background: var(--secondary-color);
+    font-size: 1rem;
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    border-radius: 6.2rem;
+    scrollbar-width: none;
+    resize: none;
+  }
+  .typing-area__typing-input:focus {
+    background: var(--secondary-hover-color);
+  }
+  .typing-area__typing-input::placeholder {
+    color: var(--placeholder-color);
+  }
+  .typing-area__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    width: 56px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .typing-area__icon:hover {
+    background-color: var(--secondary-hover-color) !important;
+  }
+  .typing-area__disclaimer-text {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--placeholder-color);
+  }
+  @media (max-width: 768px) {
+    & :where(.typing-area__typing-form, .typing-area__action-buttons) {
+      gap: 0.4rem;
+    }
+    .typing-area__input-wrapper {
+      height: 50px;
+    }
+    .typing-area__typing-input {
+      padding: 1.1rem 3.5rem 1.1rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    .typing-area__icon {
+      height: 50px;
+      width: 50px;
+    }
+    .typing-area__disclaimer-text {
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+}
