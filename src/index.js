@@ -85,8 +85,15 @@ const generateAPIResponse = async (incomingMessageDiv) => {
     showTypingEffect(apiResponse, textElement, incomingMessageDiv);
   } catch (error) {
     isResponseGenerating = false;
-    textElement.innerText = error.message;
-    textElement.classList.add('error');
+    console.log(error.message);
+    if (error.message === 'API key not valid. Please pass a valid API key.') {
+      textElement.innerText =
+        'I swear, it works! You need to download your api key from https://aistudio.google.com/app/apikey?hl=pl and paste it into index.js file in the API_KEY variable. Error message: API key not valid. Please pass a valid API key.';
+      textElement.classList.add('error');
+    } else {
+      textElement.innerText = error.message;
+      textElement.classList.add('error');
+    }
   } finally {
     incomingMessageDiv.classList.remove('chat-list__loading');
   }
@@ -182,17 +189,12 @@ toggleThemeButton.addEventListener('click', () => {
 
 //Delete all chats from local storage when button is clicked
 deleteChatButton.addEventListener('click', () => {
-  if (
-    chatList.querySelector('.chat-list__text') &&
-    !chatList.querySelector('.chat-list__text').classList.contains('error')
-  ) {
-    chatList.innerText = '';
-    document.body.classList.remove('hide-header');
-  }
-  if (!localStorage.savedChats) return;
+  if (!document.body.classList.contains('hide-header')) return;
+
   if (confirm('Are you sure you want to delete all messages?')) {
     localStorage.removeItem('savedChats');
     loadLocalStorageData();
+    document.body.classList.remove('hide-header');
   }
 });
 
