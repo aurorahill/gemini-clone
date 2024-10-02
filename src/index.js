@@ -88,7 +88,7 @@ const generateAPIResponse = async (incomingMessageDiv) => {
     console.log(error.message);
     if (error.message === 'API key not valid. Please pass a valid API key.') {
       textElement.innerText =
-        'I swear, it works! You need to download your api key from https://aistudio.google.com/app/apikey?hl=pl and paste it into index.js file in the API_KEY variable. Error message: API key not valid. Please pass a valid API key.';
+        'I swear, it works! You need to download your api key from https://aistudio.google.com and paste it into index.js file in the API_KEY variable. Error message: API key not valid. Please pass a valid API key.';
       textElement.classList.add('error');
     } else {
       textElement.innerText = error.message;
